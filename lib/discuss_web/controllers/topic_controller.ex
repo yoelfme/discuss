@@ -1,8 +1,10 @@
 defmodule DiscussWeb.TopicController do
   use DiscussWeb, :controller
-  
+
   alias Discuss.Topic
   alias Discuss.Repo
+
+  plug(DiscussWeb.Plugs.RequireAuth when action in [:new, :create, :edit, :update, :delete])
 
   def index(conn, _params) do
     topics = Repo.all(Topic)
@@ -20,12 +22,12 @@ defmodule DiscussWeb.TopicController do
     changeset = Topic.changeset(%Topic{}, topic)
 
     case Repo.insert(changeset) do
-      {:ok, _topic} -> 
+      {:ok, _topic} ->
         conn
         |> put_flash(:info, "Topic Created")
         |> redirect(to: topic_path(conn, :index))
 
-      {:error, changeset} -> 
+      {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end
@@ -54,7 +56,7 @@ defmodule DiscussWeb.TopicController do
 
   def delete(conn, %{"id" => topic_id}) do
     Repo.get!(Topic, topic_id)
-    |> Repo.delete!
+    |> Repo.delete!()
 
     conn
     |> put_flash(:info, "Topic Deleted")
