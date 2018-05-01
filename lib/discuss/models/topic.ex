@@ -3,7 +3,7 @@ defmodule Discuss.Topic do
   import Ecto.Changeset
 
   schema "topics" do
-    field :title, :string
+    field(:title, :string)
   end
 
   def changeset(struct, params \\ %{}) do

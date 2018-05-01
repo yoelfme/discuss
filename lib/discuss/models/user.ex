@@ -3,9 +3,9 @@ defmodule Discuss.User do
   import Ecto.Changeset
 
   schema "users" do
-    field :email, :string
-    field :provider, :string
-    field :token, :string
+    field(:email, :string)
+    field(:provider, :string)
+    field(:token, :string)
 
     timestamps()
   end

@@ -1,6 +1,6 @@
 defmodule DiscussWeb.AuthController do
   use DiscussWeb, :controller
-  plug Ueberauth
+  plug(Ueberauth)
 
   alias Discuss.User
   alias Discuss.Repo
@@ -9,7 +9,7 @@ defmodule DiscussWeb.AuthController do
     user_params = %{
       token: auth.credentials.token,
       email: auth.info.email,
-      provider: auth.provider |> Atom.to_string
+      provider: auth.provider |> Atom.to_string()
     }
 
     changeset = User.changeset(%User{}, user_params)

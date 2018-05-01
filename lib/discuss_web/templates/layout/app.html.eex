@@ -30,7 +30,7 @@
           <% else %>
             <li>
               <%= link "Sign with Github", to: auth_path(@conn, :request, "github") %>
-            <:li>
+            </li>
           <% end %>
         </ul>
       </div>
