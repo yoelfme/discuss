@@ -9,8 +9,6 @@ defmodule Discuss.Repo.Migrations.AddUsers do
       add :provider, :string
       add :token, :string
 
-      belongs_to(:user, User)
-
       timestamps()
     end
   end
