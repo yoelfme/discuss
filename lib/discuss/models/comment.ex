@@ -3,6 +3,8 @@ defmodule Discuss.Comment do
 
   import Ecto.Changeset
 
+  @derive {Poison.Encoder, only: [:content]}
+
   schema "comments" do
     field(:content, :string)
 
