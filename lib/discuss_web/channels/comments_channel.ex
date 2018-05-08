@@ -11,7 +11,7 @@ defmodule DiscussWeb.CommentsChannel do
     {:ok, %{}, socket}
   end
 
-  def handle_in(name, message, socket) do
+  def handle_in(name, %{"content" => content, socket) do
     {:reply, :ok, socket}
   end
 end
