@@ -10,6 +10,8 @@ defmodule Discuss.Topic do
 
     belongs_to(:user, User)
     has_many(:comments, Comment)
+
+    timestamps()
   end
 
   def changeset(struct, params \\ %{}) do

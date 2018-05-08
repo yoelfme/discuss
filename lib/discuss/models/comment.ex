@@ -8,6 +8,8 @@ defmodule Discuss.Comment do
 
     belongs_to(:user, Discuss.User)
     belongs_to(:topic, Discuss.Topic)
+
+    timestamps()
   end
 
   def changeset(struct, params \\ %{}) do
